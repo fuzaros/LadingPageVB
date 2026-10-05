@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitrine Brindes | Brindes Corporativos Personalizados B2B</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#1E293B',
+                            900: '#0F172A',
+                            950: '#080D1A',
+                        },
+                        amber: {
+                            500: '#F59E0B',
+                            600: '#D97706',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-hero {
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 60%, #0F172A 100%);
+        }
+        .amber-glow {
+            box-shadow: 0 0 25px -5px rgba(245, 158, 11, 0.4);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+        }
+        .accordion-content.active {
+            max-height: 300px;
+        }
+        .modal-overlay {
+            background-color: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(4px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-amber-500 selection:text-slate-900">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-amber-500 text-slate-950 font-semibold text-xs md:text-sm py-2 px-4 text-center tracking-wide">
+        <i class="fa-solid fa-truck-fast mr-2"></i> Atendimento Corporativo Especializado • Mockup Virtual Grátis em até 24 Horas!
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-40 bg-navy-900/95 backdrop-blur-md border-b border-slate-800 text-white transition-all duration-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-600 flex items-center justify-center text-navy-900 font-extrabold text-xl shadow-lg">
+                    VB
+                </div>
+                <div>
+                    <span class="text-xl font-bold tracking-tight text-white block leading-none">VITRINE<span class="text-amber-500">BRINDES</span></span>
+                    <span class="text-[10px] text-slate-400 font-medium tracking-widest uppercase">Sua marca pelo mundo</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#diferenciais" class="hover:text-amber-500 transition-colors">Diferenciais</a>
+                <a href="#tecnicas" class="hover:text-amber-500 transition-colors">Técnicas</a>
+                <a href="#produtos" class="hover:text-amber-500 transition-colors">Categorias</a>
+                <a href="#depoimentos" class="hover:text-amber-500 transition-colors">Clientes</a>
+                <a href="#faq" class="hover:text-amber-500 transition-colors">FAQ</a>
+            </nav>
+
+            <!-- CTA Actions -->
+            <div class="hidden lg:flex items-center gap-4">
+                <a href="tel:0800000000" class="text-slate-300 hover:text-white text-xs font-semibold flex items-center gap-2 pr-2">
+                    <i class="fa-solid fa-phone text-amber-500"></i> (11) 99320-0523
+                </a>
+                <a href="#orcamento" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-5 py-2.5 rounded-xl transition-all duration-200 amber-glow flex items-center gap-2 text-sm">
+                    <i class="fa-solid fa-file-signature"></i> Orçamento Rápido
+                </a>
+            </div>
+
+            <!-- Mobile Hamburger Button -->
+            <button id="mobile-menu-btn" class="lg:hidden text-slate-300 hover:text-white focus:outline-none p-2" aria-label="Abrir Menu">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-navy-950 border-b border-slate-800 px-4 pt-3 pb-6 space-y-3">
+            <a href="#diferenciais" class="block text-slate-300 hover:text-amber-500 py-2 border-b border-slate-800/50">Diferenciais</a>
+            <a href="#tecnicas" class="block text-slate-300 hover:text-amber-500 py-2 border-b border-slate-800/50">Técnicas de Impressão</a>
+            <a href="#produtos" class="block text-slate-300 hover:text-amber-500 py-2 border-b border-slate-800/50">Catálogo de Produtos</a>
+            <a href="#depoimentos" class="block text-slate-300 hover:text-amber-500 py-2 border-b border-slate-800/50">Quem Compra Conosco</a>
+            <a href="#faq" class="block text-slate-300 hover:text-amber-500 py-2 border-b border-slate-800/50">Dúvidas Frequentes</a>
+            <div class="pt-2 flex flex-col gap-3">
+                <a href="#orcamento" class="w-full text-center bg-amber-500 text-slate-950 font-bold py-3 rounded-xl">Solicitar Orçamento</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-hero relative overflow-hidden text-white pt-16 pb-24 md:pt-24 md:pb-32">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-amber-500/10 via-transparent to-transparent pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Hero Left Column -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-amber-400 text-xs font-semibold tracking-wider uppercase">
+                        <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+                        Especialistas em Brindes B2B
+                    </div>
+                    
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+                        Eleve a sua marca com <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-500">brindes corporativos</span> inesquecíveis.
+                    </h1>
+
+                    <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                        Surpreenda colaboradores, clientes e parceiros. Personalização em <strong>Laser, Silk-screen, Digital UV e Sublimação</strong> com padrão premium e faturamento facilitado para empresas.
+                    </p>
+
+                    <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="#orcamento" class="w-full sm:w-auto bg-amber-500 hover:bg-amber-600 text-slate-950 font-extrabold px-8 py-4 rounded-xl shadow-xl hover:shadow-amber-500/20 transition-all text-center flex items-center justify-center gap-3">
+                            <i class="fa-solid fa-paper-plane text-lg"></i>
+                            Solicitar Cotação Grátis
+                        </a>
+                        <a href="#produtos" class="w-full sm:w-auto bg-slate-800/90 hover:bg-slate-700 text-white font-semibold px-8 py-4 rounded-xl border border-slate-700 transition-all text-center flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-boxes-packing text-amber-500"></i>
+                            Explorar Produtos
+                        </a>
+                    </div>
+
+                    <!-- Trust indicators -->
+                    <div class="pt-8 border-t border-slate-800 grid grid-cols-3 gap-4 text-center lg:text-left">
+                        <div>
+                            <div class="text-2xl font-black text-amber-500">+100 mil</div>
+                            <div class="text-xs text-slate-400 mt-1">Brindes Entregues</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-black text-amber-500">24h</div>
+                            <div class="text-xs text-slate-400 mt-1">Layout Virtual</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-black text-amber-500">99.4%</div>
+                            <div class="text-xs text-slate-400 mt-1">Satisfação B2B</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Right Column: Card Preview -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative bg-slate-900/90 rounded-3xl p-6 border border-slate-800 shadow-2xl backdrop-blur-sm">
+                        <div class="absolute -top-4 -right-4 bg-amber-500 text-slate-950 font-bold px-4 py-1.5 rounded-full text-xs uppercase shadow-md">
+                            Ideal para RH & MKT
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="overflow-hidden rounded-2xl relative group">
+                                <img src="https://www.xbzbrindes.com.br/img/produtos/3/Sacola-de-Algodao-16022-1727462236.jpg" alt="Sacola Kit para brindes" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent"></div>
+                                <div class="absolute bottom-4 left-4 right-4">
+                                    <span class="text-xs bg-amber-500/90 text-slate-950 font-bold px-2.5 py-1 rounded">Mais Vendido</span>
+                                    <h3 class="text-lg font-bold text-white mt-1">Sacola de Algodão</h3>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-3">
+                                <div class="bg-slate-800/60 p-3 rounded-xl border border-slate-700/50 flex items-center gap-3">
+                                    <i class="fa-solid fa-wand-magic-sparkles text-amber-500 text-xl"></i>
+                                    <div>
+                                        <div class="text-xs font-bold text-white">Gravação Laser</div>
+                                        <div class="text-[10px] text-slate-400">Precisão milimétrica</div>
+                                    </div>
+                                </div>
+                                <div class="bg-slate-800/60 p-3 rounded-xl border border-slate-700/50 flex items-center gap-3">
+                                    <i class="fa-solid fa-palette text-amber-500 text-xl"></i>
+                                    <div>
+                                        <div class="text-xs font-bold text-white">Impressão UV</div>
+                                        <div class="text-[10px] text-slate-400">Cores vibrantes HD</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="#orcamento" class="block text-center w-full bg-slate-800 hover:bg-slate-700 text-amber-400 font-bold py-3 rounded-xl border border-amber-500/30 text-sm transition-all">
+                                Customizar este produto para sua Empresa &rarr;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Differentials (B2B Focus) -->
+    <section id="diferenciais" class="py-16 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs font-extrabold text-amber-600 tracking-wider uppercase">Por que escolher a Vitrine Brindes?</h2>
+                <p class="mt-2 text-3xl font-extrabold text-slate-900 sm:text-4xl">Processo Ágil Criado Especialmente para Empresas</p>
+                <p class="mt-4 text-slate-600 text-base">Entendemos a rotina corrida dos setores de Compras, RH e Marketing. Garantimos tranquilidade da cotação à entrega.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Diferencial 1 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:shadow-lg transition-all hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center text-2xl font-bold mb-4">
+                        <i class="fa-solid fa-file-pdf"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Mockup Virtual em 24h</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Você envia sua logo e nós geramos a simulação 3D digital sem custo antes de iniciar a produção.</p>
+                </div>
+
+                <!-- Diferencial 2 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:shadow-lg transition-all hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center text-2xl font-bold mb-4">
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Faturamento CNPJ</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Condições flexíveis de faturamento corporativo para empresas cadastradas (Boleto 28/42 dias e PIX).</p>
+                </div>
+
+                <!-- Diferencial 2 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:shadow-lg transition-all hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center text-2xl font-bold mb-4">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Garantia de Qualidade</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Impressão de alta fixação que não desbota. Controle rigoroso de qualidade peça por peça.</p>
+                </div>
+
+                <!-- Diferencial 4 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:shadow-lg transition-all hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center text-2xl font-bold mb-4">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Opções Expressas</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Prazos de produção emergenciais para eventos e convenções de última hora.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customization Techniques Section -->
+    <section id="tecnicas" class="py-20 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-amber-500 font-bold text-xs uppercase tracking-widest">Tecnologia em Gravação</span>
+                <h2 class="text-3xl font-extrabold text-white sm:text-4xl mt-2">Técnicas de Personalização de Alta Precisão</h2>
+                <p class="mt-4 text-slate-400 text-base">Utilizamos as mais modernas tecnologias do mercado para garantir fidelidade à identidade visual da sua empresa.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Technique 1: Laser -->
+                <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 flex flex-col justify-between hover:border-amber-500/50 transition-all group">
+                    <div>
+                        <div class="w-10 h-10 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-bolt-lightning"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Gravação a Laser</h3>
+                        <p class="text-slate-400 text-sm mb-4">Gravação permanente por camada. Não desbota nem descasca .</p>
+                    </div>
+                    <div>
+                        <span class="text-xs font-semibold text-amber-400 block mb-1">Ideal para:</span>
+                        <div class="flex flex-wrap gap-1.5 text-[11px] text-slate-300">
+                            <span class="bg-slate-700 px-2 py-1 rounded">Inox / Metal</span>
+                            <span class="bg-slate-700 px-2 py-1 rounded">Madeira / Bambu</span>
+                            <span class="bg-slate-700 px-2 py-1 rounded">Couro</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technique 2: Impressão UV -->
+                <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 flex flex-col justify-between hover:border-amber-500/50 transition-all group">
+                    <div>
+                        <div class="w-10 h-10 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-sun"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Impressão UV Digital</h3>
+                        <p class="text-slate-400 text-sm mb-4">Secagem ultra-rápida, permitindo cores vivas, gradientes complexos e imagens fotográficas.</p>
+                    </div>
+                    <div>
+                        <span class="text-xs font-semibold text-amber-400 block mb-1">Ideal para:</span>
+                        <div class="flex flex-wrap gap-1.5 text-[11px] text-slate-300">
+                            <span class="bg-slate-700 px-2 py-1 rounded">Acrílico</span>
+                            <span class="bg-slate-700 px-2 py-1 rounded">Powerbanks</span>
+                            <span class="bg-slate-700 px-2 py-1 rounded">Plásticos Rígidos</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tecnica 3: Silk-Screen -->
+                <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 flex flex-col justify-between hover:border-amber-500/50 transition-all group">
+                    <div>
+                        <div class="w-10 h-10 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-fill-drip"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Silk-Screen (Serigrafia)</h3>
+                        <p class="text-slate-400 text-sm mb-4">Excelente cobertura de cor para grandes tiragens e logotipos com cores sólidas Pantone.</p>
+                    </div>
+                    <div>
+                        <span class="text-xs font-semibold text-amber-400 block mb-1">Ideal para:</span>
+                        <div class="flex flex-wrap gap-1.5 text-[11px] text-slate-300">
+                            <span class="bg-slate-700 px-2 py-1 rounded">Sacolas Ecológicas</span>
+                            <span class="bg-slate-700 px-2 py-1 rounded">Camisetas</span>
+                            <span class="bg-slate-700 px-2 py-1 rounded">Pastas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tecnica 4: Sublimação -->
+                <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 flex flex-col justify-between hover:border-amber-500/50 transition-all group">
+                    <div>
+                        <div class="w-10 h-10 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-shirt"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Sublimação Termotransfer</h3>
+                        <p class="text-slate-400 text-sm mb-4">Transferência de tinta térmica com cobertura total da superfície (360 graus).</p>
+                    </div>
+                    <div>
+                        <span class="text-xs font-semibold text-amber-400 block mb-1">Ideal para:</span>
+                        <div class="flex flex-wrap gap-1.5 text-[11px] text-slate-300">
+                            <span class="bg-slate-700 px-2 py-1 rounded">Canecas Resinadas</span>
+                            <span class="bg-slate-700 px-2 py-1 rounded">Tecidos Poliéster</span>
+                            <span class="bg-slate-700 px-2 py-1 rounded">Mousepads</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produtos / Portfolio Catalog Section -->
+    <section id="produtos" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-amber-600 font-bold text-xs uppercase tracking-widest">Nosso Portfólio</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl mt-2">Catálogo de Brindes Populares</h2>
+                <p class="mt-3 text-slate-600">Selecione uma categoria e veja algumas das opções mais solicitadas pelas maiores empresas do país.</p>
+            </div>
+
+            <!-- Produto Category Filter Tabs -->
+            <div class="flex flex-wrap justify-center gap-2 mb-12">
+                <button class="filter-btn active bg-navy-900 text-white font-semibold px-5 py-2.5 rounded-full text-sm transition-all shadow" data-category="todos">
+                    Todos os Produtos
+                </button>
+                <button class="filter-btn bg-white hover:bg-slate-200 text-slate-700 font-semibold px-5 py-2.5 rounded-full text-sm transition-all border border-slate-200" data-category="onboarding">
+                    Sacolas para Kits
+                </button>
+                <button class="filter-btn bg-white hover:bg-slate-200 text-slate-700 font-semibold px-5 py-2.5 rounded-full text-sm transition-all border border-slate-200" data-category="tecnologia">
+                    Tecnológicos
+                </button>
+                <button class="filter-btn bg-white hover:bg-slate-200 text-slate-700 font-semibold px-5 py-2.5 rounded-full text-sm transition-all border border-slate-200" data-category="copos">
+                    Copos & Squeezes
+                </button>
+                <button class="filter-btn bg-white hover:bg-slate-200 text-slate-700 font-semibold px-5 py-2.5 rounded-full text-sm transition-all border border-slate-200" data-category="executivo">
+                    Linha Executiva
+                </button>
+            </div>
+
+            <!-- Produto Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="product-grid">
+                <!-- Produto Card 1 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-category="onboarding">
+                    <div>
+                        <div class="relative h-56 overflow-hidden">
+                            <img src="https://www.xbzbrindes.com.br/img/produtos/3/Sacola-de-Algodao-16022-1727462236.jpg" alt="Kit Onboarding VIP" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-3 right-3 bg-amber-500 text-slate-950 font-bold text-[11px] px-2.5 py-1 rounded-md uppercase">Silk-Screen & UV</span>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-amber-600 uppercase tracking-wider">Sacola para kits</span>
+                            <h3 class="text-xl font-bold text-slate-900 mt-1 mb-2">Sacola de Algodão</h3>
+                            <p class="text-slate-600 text-sm mb-4">Uma sacola em Algodão ecológico, otima para carregar pequenos objetos.</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-0 border-t border-slate-100 flex items-center justify-between mt-auto">
+                        <span class="text-xs text-slate-500 font-medium"><i class="fa-solid fa-box text-amber-500 mr-1"></i> Mínimo: 20 unid.</span>
+                        <a href="#orcamento" onclick="selectProductInForm('Kit Welcome Boss')" class="bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-white font-bold text-xs px-4 py-2.5 rounded-lg transition-colors">
+                            Cotar Este
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-category="copos">
+                    <div>
+                        <div class="relative h-56 overflow-hidden">
+                            <img src="https://www.xbzbrindes.com.br/img/produtos/3/Caneca-Termica-1-2L-BRANCO-17617-1720790827.jpg" alt="Caneca Térmica 1,2L" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-3 right-3 bg-amber-500 text-slate-950 font-bold text-[11px] px-2.5 py-1 rounded-md uppercase">Gravação Laser & UV</span>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-amber-600 uppercase tracking-wider">Canecas, Copos & Squeezes</span>
+                            <h3 class="text-xl font-bold text-slate-900 mt-1 mb-2">Caneca Térmica 1,2L Inox</h3>
+                            <p class="text-slate-600 text-sm mb-4">Mantém a bebida gelada por até 4h. Parede dupla com isolamento a vácuo e tampa antivazamento.</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-0 border-t border-slate-100 flex items-center justify-between mt-auto">
+                        <span class="text-xs text-slate-500 font-medium"><i class="fa-solid fa-box text-amber-500 mr-1"></i> Mínimo: 10 unid.</span>
+                        <a href="#orcamento" onclick="selectProductInForm('Caneca Térmica 1,2L')" class="bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-white font-bold text-xs px-4 py-2.5 rounded-lg transition-colors">
+                            Cotar Este
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-category="tecnologia">
+                    <div>
+                        <div class="relative h-56 overflow-hidden">
+                            <img src="https://www.xbzbrindes.com.br/img/produtos/3/Power-Bank-10-000mAh-com-Lanterna-e-Multissaidas-12928-1621972572.jpg" alt="Power Bank 10.000mAh com Lanterna" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-3 right-3 bg-amber-500 text-slate-950 font-bold text-[11px] px-2.5 py-1 rounded-md uppercase">UV Digital</span>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-amber-600 uppercase tracking-wider">Tecnológicos</span>
+                            <h3 class="text-xl font-bold text-slate-900 mt-1 mb-2">Power Bank 10.000mAh com Lanterna e Multissaídas</h3>
+                            <p class="text-slate-600 text-sm mb-4">Carregador portátil com Multissaídas. Personalização colorida em altíssima definição na parte superior.</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-0 border-t border-slate-100 flex items-center justify-between mt-auto">
+                        <span class="text-xs text-slate-500 font-medium"><i class="fa-solid fa-box text-amber-500 mr-1"></i> Mínimo: 15 unid.</span>
+                        <a href="#orcamento" onclick="selectProductInForm('Power Bank 10.000mAh com Lanterna')" class="bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-white font-bold text-xs px-4 py-2.5 rounded-lg transition-colors">
+                            Cotar Este
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-category="executivo">
+                    <div>
+                        <div class="relative h-56 overflow-hidden">
+                            <img src="https://www.xbzbrindes.com.br/img/produtos/3/Kit-Executivo-3-Pecas-VERMELHO-25621-1762444759.jpg" alt="Kit Executivo 3 Peças" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-3 right-3 bg-amber-500 text-slate-950 font-bold text-[11px] px-2.5 py-1 rounded-md uppercase">DIGITAL UV</span>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-amber-600 uppercase tracking-wider">Linha Executiva</span>
+                            <h3 class="text-xl font-bold text-slate-900 mt-1 mb-2">Caderno Moleskine com Caneta e lapiseira</h3>
+                            <p class="text-slate-600 text-sm mb-4">Capa dura em couro sintético, marcador de página em fita de cetim e caneta esferográfica em metal e lapiseira.</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-0 border-t border-slate-100 flex items-center justify-between mt-auto">
+                        <span class="text-xs text-slate-500 font-medium"><i class="fa-solid fa-box text-amber-500 mr-1"></i> Mínimo: 50 unid.</span>
+                        <a href="#orcamento" onclick="selectProductInForm('Caderno Moleskine com Caneta e lapiseira')" class="bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-white font-bold text-xs px-4 py-2.5 rounded-lg transition-colors">
+                            Cotar Este
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product Card 5 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-category="copos">
+                    <div>
+                        <div class="relative h-56 overflow-hidden">
+                            <img src="https://www.xbzbrindes.com.br/img/produtos/3/Garrafa-Termica-Bambu-400ml-com-Infusor-19177-1717502080.jpg" alt="Garrafa Térmica Bambu 400ml" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-3 right-3 bg-amber-500 text-slate-950 font-bold text-[11px] px-2.5 py-1 rounded-md uppercase">Gravação Laser & DIGITAL UV</span>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-amber-600 uppercase tracking-wider">Garrafas & Squeezes</span>
+                            <h3 class="text-xl font-bold text-slate-900 mt-1 mb-2">Garrafa Térmica Bambu 400ml Eco</h3>
+                            <p class="text-slate-600 text-sm mb-4">Design sustentável com tampa revestida em bambu natural. Capacidade para 400ml.</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-0 border-t border-slate-100 flex items-center justify-between mt-auto">
+                        <span class="text-xs text-slate-500 font-medium"><i class="fa-solid fa-box text-amber-500 mr-1"></i> Mínimo: 10 unid.</span>
+                        <a href="#orcamento" onclick="selectProductInForm('Garrafa Térmica Bambu 400ml Eco')" class="bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-white font-bold text-xs px-4 py-2.5 rounded-lg transition-colors">
+                            Cotar Este
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product Card 6 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-category="tecnologia">
+                    <div>
+                        <div class="relative h-56 overflow-hidden">
+                            <img src="https://www.xbzbrindes.com.br/img/produtos/3/Fone-de-Ouvido-Bluetooth-com-Case-Carregador-27721d1-1774531984.jpg" alt="Fone Bluetooth com Case" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-3 right-3 bg-amber-500 text-slate-950 font-bold text-[11px] px-2.5 py-1 rounded-md uppercase">UV Digital</span>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-amber-600 uppercase tracking-wider">Tecnológicos</span>
+                            <h3 class="text-xl font-bold text-slate-900 mt-1 mb-2">Fone Sem Fio Bluetooth com Case</h3>
+                            <p class="text-slate-600 text-sm mb-4">Fone de ouvido estéreo com estojo recarregável. Logotipo gravado na tampa do estojo.</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-0 border-t border-slate-100 flex items-center justify-between mt-auto">
+                        <span class="text-xs text-slate-500 font-medium"><i class="fa-solid fa-box text-amber-500 mr-1"></i> Mínimo: 20 unid.</span>
+                        <a href="#orcamento" onclick="selectProductInForm('Fone Sem Fio Bluetooth')" class="bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-white font-bold text-xs px-4 py-2.5 rounded-lg transition-colors">
+                            Cotar Este
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof and Testimonials Section -->
+    <section id="depoimentos" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-amber-600 font-bold text-xs uppercase tracking-widest">Confiança B2B</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl mt-2">Quem Compra Conosco Recomenda</h2>
+                <p class="mt-3 text-slate-600">Empresas líderes confiam na Vitrine Brindes para momentos decisivos de suas marcas.</p>
+            </div>
+
+            <!-- Client Logos Banner -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 items-center justify-center opacity-70 grayscale hover:grayscale-0 transition-all mb-16">
+                <div class="bg-slate-100 p-4 rounded-xl text-center font-black text-slate-600 tracking-wider">SICOOB</div>
+                <div class="bg-slate-100 p-4 rounded-xl text-center font-black text-slate-600 tracking-wider">ANHAGUERA</div>
+                <div class="bg-slate-100 p-4 rounded-xl text-center font-black text-slate-600 tracking-wider">BISUTTI</div>
+                <div class="bg-slate-100 p-4 rounded-xl text-center font-black text-slate-600 tracking-wider">NEO QUÍMICA</div>
+                <div class="bg-slate-100 p-4 rounded-xl text-center font-black text-slate-600 tracking-wider">VALDA</div>
+                <div class="bg-slate-100 p-4 rounded-xl text-center font-black text-slate-600 tracking-wider">CVC</div>
+            </div>
+
+            <!-- Testimonials Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200/80 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-500 mb-4 text-sm">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-700 text-sm italic mb-6">"Precisávamos de 50 sacolas de kits para nossa convenção anual em um prazo super curto. A gravação a laser nos copos ficou impecável e a entrega foi antecipada!"</p>
+                    </div>
+                    <div class="flex items-center gap-3 border-t border-slate-200 pt-4">
+                        <div class="w-10 h-10 rounded-full bg-slate-300 font-bold flex items-center justify-center text-slate-700 text-sm">
+                            MC
+                        </div>
+                        <div>
+                            <div class="text-sm font-bold text-slate-900">Mariana Costa</div>
+                            <div class="text-xs text-slate-500">Gerente de People & Culture</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200/80 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-500 mb-4 text-sm">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-700 text-sm italic mb-6">"O atendimento via WhatsApp foi extremamente ágil. Em menos de 2 horas tínhamos o orçamento completo com o layout virtual dos fones de ouvido para aprovação da diretoria."</p>
+                    </div>
+                    <div class="flex items-center gap-3 border-t border-slate-200 pt-4">
+                        <div class="w-10 h-10 rounded-full bg-slate-300 font-bold flex items-center justify-center text-slate-700 text-sm">
+                            RA
+                        </div>
+                        <div>
+                            <div class="text-sm font-bold text-slate-900">Ricardo Almeida</div>
+                            <div class="text-xs text-slate-500">Coordenador de Marketing B2B</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200/80 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-500 mb-4 text-sm">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-700 text-sm italic mb-6">"A facilidade do faturamento via boleto CNPJ para 28 dias facilitou muito nosso processo de compras interno. Já é o terceiro ano que fechamos nossos brindes de fim de ano com eles."</p>
+                    </div>
+                    <div class="flex items-center gap-3 border-t border-slate-200 pt-4">
+                        <div class="w-10 h-10 rounded-full bg-slate-300 font-bold flex items-center justify-center text-slate-700 text-sm">
+                            FB
+                        </div>
+                        <div>
+                            <div class="text-sm font-bold text-slate-900">Fernanda Barbosa</div>
+                            <div class="text-xs text-slate-500">Especialista em Suprimentos</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Quote Form & WhatsApp Generator -->
+    <section id="orcamento" class="py-20 bg-navy-900 text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Info Banner -->
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-amber-500 font-bold text-xs uppercase tracking-widest">Orçamento Expresso em 1 Minuto</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+                        Solicite sua Cotação Personalizada Sem Compromisso
+                    </h2>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Preencha os dados da sua empresa abaixo. Nosso sistema vai gerar um formulário pré-formatado instantâneo no seu WhatsApp com atendimento priorizado.
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-white">Layout Virtual Gratuito</h4>
+                                <p class="text-xs text-slate-400">Enviamos a amostra digital (Mockup) do brinde com sua marca antes do pedido.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold shrink-0 mt-0.5">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-white">Atendimento Consultivo</h4>
+                                <p class="text-xs text-slate-400">Especialistas em gravação recomendam a melhor técnica para seu orçamento.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-4 bg-slate-800/80 rounded-2xl border border-slate-700 flex items-center gap-4 mt-6">
+                        <div class="text-3xl text-green-400">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs text-slate-400">Atendimento Direto via WhatsApp</div>
+                            <div class="text-sm font-bold text-white">(11) 99320-0523</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Interactive Form -->
+                <div class="lg:col-span-7 bg-white text-slate-900 rounded-3xl p-6 sm:p-8 shadow-2xl">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-1">Formulário de Cotação para Empresas</h3>
+                    <p class="text-xs text-slate-500 mb-6">Preencha os campos para calcularmos prazos e valores especiais.</p>
+
+                    <form id="quote-form" onsubmit="handleQuoteSubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Seu Nome *</label>
+                                <input type="text" id="form-name" required placeholder="Ex: Camila Silva" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Nome da Empresa / CNPJ *</label>
+                                <input type="text" id="form-company" required placeholder="Ex: Tech Solutions Ltda" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">E-mail Corporativo *</label>
+                                <input type="email" id="form-email" required placeholder="camila@empresa.com.br" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">WhatsApp de Contato *</label>
+                                <input type="tel" id="form-phone" required placeholder="(11) 99320-0523" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Brinde de Interesse *</label>
+                                <select id="form-product" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+                                    <option value="">Selecione o produto...</option>
+                                    <option value="Sacola para Kits ">Sacola de Algodão</option>
+                                    <option value="Caneca Térmica 1,2L Inox">Caneca Térmica 1,2L Inox Inox</option>
+                                    <option value="Power Bank 10.000mAh com lanterna ">Power Bank 10.000mAh com lanterna</option>
+                                    <option value="Caderno Moleskine com Caneta e lapiseira">Caderno Moleskine com Caneta e lapiseira</option>
+                                    <option value="Garrafa Térmica Bambu 400ml Eco">Garrafa Térmica Bambu 400ml Eco</option>
+                                    <option value="Fone Sem Fio Bluetooth com Case">Fone Sem Fio Bluetooth com Case</option>
+                                    <option value="Outro Modelo / Projeto Especial">Outro Modelo / Projeto Especial</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Quantidade Estimada *</label>
+                                <input type="number" id="form-quantity" min="10" required placeholder="Ex: 50" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Prazo Desejado para Entrega</label>
+                                <select id="form-deadline" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+                                    <option value="Normal (10 a 15 dias)">Normal (10 a 15 dias)</option>
+                                    <option value="Urgente (5 a 7 dias)">Urgente (5 a 7 dias)</option>
+                                    <option value="Super Express (Eventos / Hoje)">Super Express (Eventos em breve)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Técnica de Gravação Preferida</label>
+                                <select id="form-technique" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+                                    <option value="Recomendação da Equipe">Recomendação da Equipe Vitrine Brindes</option>
+                                    <option value="Gravação a Laser">Gravação a Laser</option>
+                                    <option value="Impressão UV Digital">Impressão UV Digital</option>
+                                    <option value="Silk-Screen">Silk-Screen</option>
+                                    <option value="Sublimação">Sublimação</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Observações do Projeto / Detalhes</label>
+                            <textarea id="form-obs" rows="2" placeholder="Ex: Gostaria da gravação da logo em ambos os lados na cor dourada." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-green-600 hover:bg-green-500 text-white font-extrabold py-4 rounded-xl text-base shadow-lg transition-all flex items-center justify-center gap-3">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i>
+                            Gerar Orçamento no WhatsApp 
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-amber-600 font-bold text-xs uppercase tracking-widest">Tire Suas Dúvidas</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl mt-2">Perguntas Frequentes (FAQ)</h2>
+            </div>
+
+            <div class="space-y-4" id="faq-accordion">
+                <!-- FAQ Item 1 -->
+                <div class="border border-slate-200 rounded-2xl overflow-hidden">
+                    <button class="accordion-header w-full p-5 text-left font-bold text-slate-900 bg-slate-50 flex justify-between items-center hover:bg-slate-100 transition-colors">
+                        <span>Como funciona o envio do meu logotipo para aprovação?</span>
+                        <i class="fa-solid fa-chevron-down text-slate-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content bg-white px-5">
+                        <p class="py-4 text-slate-600 text-sm leading-relaxed border-t border-slate-100">
+                            Após solicitar o orçamento, nossa vendedora entrará em contato para receber seu arquivo de logo (preferencialmente em vetor CDR, PDF, EPS ou AI). Em até 24h úteis criamos a mockup virtual totalmente gratuita para sua validação antes de ir para produção.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="border border-slate-200 rounded-2xl overflow-hidden">
+                    <button class="accordion-header w-full p-5 text-left font-bold text-slate-900 bg-slate-50 flex justify-between items-center hover:bg-slate-100 transition-colors">
+                        <span>Quais são as condições de faturamento B2B para CNPJ?</span>
+                        <i class="fa-solid fa-chevron-down text-slate-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content bg-white px-5">
+                        <p class="py-4 text-slate-600 text-sm leading-relaxed border-t border-slate-100">
+                            Trabalhamos com faturamento via boleto bancário para prazos de 15 a 30 dias mediante aprovação de crédito simplificada. PIX com desconto promocional.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="border border-slate-200 rounded-2xl overflow-hidden">
+                    <button class="accordion-header w-full p-5 text-left font-bold text-slate-900 bg-slate-50 flex justify-between items-center hover:bg-slate-100 transition-colors">
+                        <span>Qual é a quantidade mínima por pedido?</span>
+                        <i class="fa-solid fa-chevron-down text-slate-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content bg-white px-5">
+                        <p class="py-4 text-slate-600 text-sm leading-relaxed border-t border-slate-100">
+                            A quantidade mínima varia conforme a categoria. Para sacolas de kits e eletrônicos premium a partir de 15 a 20 unidades. Para canetas e copos a partir de 50 a 100 unidades.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="border border-slate-200 rounded-2xl overflow-hidden">
+                    <button class="accordion-header w-full p-5 text-left font-bold text-slate-900 bg-slate-50 flex justify-between items-center hover:bg-slate-100 transition-colors">
+                        <span>Vocês atendem e entregam em todo o Brasil?</span>
+                        <i class="fa-solid fa-chevron-down text-slate-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content bg-white px-5">
+                        <p class="py-4 text-slate-600 text-sm leading-relaxed border-t border-slate-100">
+                            Sim! Possuímos contratos com as principais transportadoras. Entregamos em qualquer cidade do Brasil. OBS: consultar antes o preço do frete.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy-950 text-slate-400 pt-16 pb-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-12 border-b border-slate-800">
+                
+                <!-- Col 1: Brand -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-amber-500 flex items-center justify-center text-navy-900 font-extrabold text-lg">
+                            V
+                        </div>
+                        <span class="text-lg font-bold text-white tracking-tight">VITRINE<span class="text-amber-500">BRINDES</span></span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Sua parceira em soluções de engajamento corporativo, marketing e eventos através de brindes personalizados de alto padrão.
+                    </p>
+                </div>
+
+                <!-- Col 2: Navigation -->
+                <div>
+                    <h4 class="text-white text-sm font-bold mb-4 uppercase tracking-wider">Navegação</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#diferenciais" class="hover:text-amber-400 transition-colors">Diferenciais B2B</a></li>
+                        <li><a href="#tecnicas" class="hover:text-amber-400 transition-colors">Gravação Laser / UV / Silk</a></li>
+                        <li><a href="#produtos" class="hover:text-amber-400 transition-colors">Catálogo Parcial</a></li>
+                        <li><a href="#orcamento" class="hover:text-amber-400 transition-colors">Solicitar Mockup Digital</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Contact & Hours -->
+                <div>
+                    <h4 class="text-white text-sm font-bold mb-4 uppercase tracking-wider">Atendimento</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><i class="fa-solid fa-clock text-amber-500 mr-2"></i>Seg. a Sex: 08:00h às 18:00h</li>
+                        <li><i class="fa-solid fa-envelope text-amber-500 mr-2"></i>natalia.glazaro18@gmail.com</li>
+                        <li><i class="fa-solid fa-phone text-amber-500 mr-2"></i>(11) 99320-0523</li>
+                        <li><i class="fa-solid fa-location-dot text-amber-500 mr-2"></i>São Paulo / SP - Atendimento Nacional</li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Payment Methods -->
+                <div>
+                    <h4 class="text-white text-sm font-bold mb-4 uppercase tracking-wider">Pagamento Facilitado</h4>
+                    <div class="flex flex-wrap gap-2 text-xs text-slate-300">
+                        <span class="bg-slate-800 px-3 py-1.5 rounded border border-slate-700">Faturamento CNPJ</span>
+                        <span class="bg-slate-800 px-3 py-1.5 rounded border border-slate-700">PIX com Desconto</span>
+                        <span class="bg-slate-800 px-3 py-1.5 rounded border border-slate-700">Cartão Corporativo</span>
+                        <span class="bg-slate-800 px-3 py-1.5 rounded border border-slate-700">Boleto 15/30 dias</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="pt-8 text-center text-xs text-slate-500 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p>&copy; 2026 Vitrine Brindes Corporativos Ltda. Todos os direitos reservados.</p>
+                <p class="flex items-center gap-2">
+                    <span>Desenvolvido com excelência B2B</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Logic Script -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking menu links
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const productCards = document.querySelectorAll('.product-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active classes
+                filterBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-navy-900', 'text-white');
+                    b.classList.add('bg-white', 'text-slate-700');
+                });
+
+                // Add active class to clicked button
+                btn.classList.add('active', 'bg-navy-900', 'text-white');
+                btn.classList.remove('bg-white', 'text-slate-700');
+
+                const category = btn.getAttribute('data-category');
+
+                productCards.forEach(card => {
+                    if (category === 'todos' || card.getAttribute('data-category') === category) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        function selectProductInForm(productName) {
+            const productSelect = document.getElementById('form-product');
+            if (productSelect) {
+                productSelect.value = productName;
+            }
+        }
+
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const icon = header.querySelector('i');
+
+                // Close all other accordions
+                document.querySelectorAll('.accordion-content').forEach(item => {
+                    if (item !== content) {
+                        item.classList.remove('active');
+                        item.previousElementSibling.querySelector('i').style.transform = 'rotate(0deg)';
+                    }
+                });
+
+                // Toggle current
+                content.classList.toggle('active');
+                if (content.classList.contains('active')) {
+                    icon.style.transform = 'rotate(180deg)';
+                } else {
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            });
+        });
+
+        function handleQuoteSubmit(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('form-name').value;
+            const company = document.getElementById('form-company').value;
+            const email = document.getElementById('form-email').value;
+            const phone = document.getElementById('form-phone').value;
+            const product = document.getElementById('form-product').value;
+            const quantity = document.getElementById('form-quantity').value;
+            const deadline = document.getElementById('form-deadline').value;
+            const technique = document.getElementById('form-technique').value;
+            const obs = document.getElementById('form-obs').value;
+
+            // Formatted WhatsApp message
+            let message = `*SOLICITAÇÃO DE ORÇAMENTO - VITRINE BRINDES*\n\n`;
+            message += `*Nome:* ${name}\n`;
+            message += `*Empresa/CNPJ:* ${company}\n`;
+            message += `*E-mail:* ${email}\n`;
+            message += `*Telefone:* ${phone}\n\n`;
+            message += `*DETALHES DO PEDIDO:*\n`;
+            message += `• *Produto:* ${product}\n`;
+            message += `• *Quantidade:* ${quantity} unidades\n`;
+            message += `• *Prazo Desejado:* ${deadline}\n`;
+            message += `• *Técnica:* ${technique}\n`;
+            if (obs.trim() !== '') {
+                message += `• *Obs:* ${obs}\n`;
+            }
+            message += `\n_Aguardando Mockup digital e valores._`;
+
+            // WhatsApp API URL (Phone number 5511993200523)
+            const targetPhone = "5511993200523";
+            const whatsappUrl = `https://wa.me/${targetPhone}?text=${encodeURIComponent(message)}`;
+
+            // Open WhatsApp in a new tab
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
