@@ -1057,70 +1057,82 @@
 
     <!-- Interactive Logic Script -->
     <script>
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
+        document.addEventListener('DOMContentLoaded', () => {
 
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+            // 1. Menu Mobile
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
 
-        const filterButtons = document.querySelectorAll('.filter-btn');
-
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // 1. Remove classes ativas de TODOS os botões e restaura o estilo inativo
-                filterButtons.forEach(btn => {
-                    btn.classList.remove('active', 'bg-navy-900', 'text-white', 'shadow');
-                    btn.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-200', 'hover:bg-slate-100');
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
                 });
 
-                // 2. Adiciona classes ativas APENAS no botão clicado
-                button.classList.add('active', 'bg-navy-900', 'text-white', 'shadow');
-                button.classList.remove('bg-white', 'text-slate-700', 'border', 'border-slate-200', 'hover:bg-slate-100');
-
-                // 3. Remove o foco do toque do celular para evitar o bug visual de hover residual
-                button.blur();
-
-                // 4. Executa a lógica do filtro
-                const category = button.getAttribute('data-category');
-                filterProducts(category);
-            });
-        });
-
-        // Close mobile menu when clicking menu links
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const productCards = document.querySelectorAll('.product-card');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove active classes
-                filterBtns.forEach(b => {
-                    b.classList.remove('active', 'bg-navy-900', 'text-white');
-                    b.classList.add('bg-white', 'text-slate-700');
+                document.querySelectorAll('#mobile-menu a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                    });
                 });
+            }
 
-                // Add active class to clicked button
-                btn.classList.add('active', 'bg-navy-900', 'text-white');
-                btn.classList.remove('bg-white', 'text-slate-700');
+            // 2. Filtro de Produtos (Unificado)
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const productCards = document.querySelectorAll('.product-card');
 
-                const category = btn.getAttribute('data-category');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Reset no estilo de todos os botões
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active', 'bg-navy-900', 'text-white', 'shadow');
+                        btn.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-200', 'hover:bg-slate-100');
+                    });
 
-                productCards.forEach(card => {
-                    if (category === 'todos' || card.getAttribute('data-category') === category) {
-                        card.style.display = 'flex';
-                    } else {
-                        card.style.display = 'none';
+                    // Estilo ativo no botão clicado
+                    button.classList.add('active', 'bg-navy-900', 'text-white', 'shadow');
+                    button.classList.remove('bg-white', 'text-slate-700', 'border', 'border-slate-200', 'hover:bg-slate-100');
+
+                    // Remove o foco visual no mobile
+                    button.blur();
+
+                    // Filtragem dos cards
+                    const category = button.getAttribute('data-category');
+                    productCards.forEach(card => {
+                        const cardCategory = card.getAttribute('data-category');
+                        if (category === 'todos' || cardCategory === category) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // 3. Accordion
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const content = header.nextElementSibling;
+                    const icon = header.querySelector('i');
+
+                    document.querySelectorAll('.accordion-content').forEach(item => {
+                        if (item !== content) {
+                            item.classList.remove('active');
+                            if (item.previousElementSibling && item.previousElementSibling.querySelector('i')) {
+                                item.previousElementSibling.querySelector('i').style.transform = 'rotate(0deg)';
+                            }
+                        }
+                    });
+
+                    content.classList.toggle('active');
+                    if (icon) {
+                        icon.style.transform = content.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
                     }
                 });
             });
+
         });
 
+        // 4. Selecionar Produto no Formulário (Global)
         function selectProductInForm(productName) {
             const productSelect = document.getElementById('form-product');
             if (productSelect) {
@@ -1128,45 +1140,25 @@
             }
         }
 
-        const accordionHeaders = document.querySelectorAll('.accordion-header');
-
-        accordionHeaders.forEach(header => {
-            header.addEventListener('click', () => {
-                const content = header.nextElementSibling;
-                const icon = header.querySelector('i');
-
-                // Close all other accordions
-                document.querySelectorAll('.accordion-content').forEach(item => {
-                    if (item !== content) {
-                        item.classList.remove('active');
-                        item.previousElementSibling.querySelector('i').style.transform = 'rotate(0deg)';
-                    }
-                });
-
-                // Toggle current
-                content.classList.toggle('active');
-                if (content.classList.contains('active')) {
-                    icon.style.transform = 'rotate(180deg)';
-                } else {
-                    icon.style.transform = 'rotate(0deg)';
-                }
-            });
-        });
-
+        // 5. Submit do Formulário WhatsApp (Global)
         function handleQuoteSubmit(event) {
             event.preventDefault();
 
-            const name = document.getElementById('form-name').value;
-            const company = document.getElementById('form-company').value;
-            const email = document.getElementById('form-email').value;
-            const phone = document.getElementById('form-phone').value;
-            const product = document.getElementById('form-product').value;
-            const quantity = document.getElementById('form-quantity').value;
-            const deadline = document.getElementById('form-deadline').value;
-            const technique = document.getElementById('form-technique').value;
-            const obs = document.getElementById('form-obs').value;
+            const getValue = (id) => {
+                const el = document.getElementById(id);
+                return el ? el.value : '';
+            };
 
-            // Formatted WhatsApp message
+            const name = getValue('form-name');
+            const company = getValue('form-company');
+            const email = getValue('form-email');
+            const phone = getValue('form-phone');
+            const product = getValue('form-product');
+            const quantity = getValue('form-quantity');
+            const deadline = getValue('form-deadline');
+            const technique = getValue('form-technique');
+            const obs = getValue('form-obs');
+
             let message = `*SOLICITAÇÃO DE ORÇAMENTO - VITRINE BRINDES*\n\n`;
             message += `*Nome:* ${name}\n`;
             message += `*Empresa/CNPJ:* ${company}\n`;
@@ -1182,11 +1174,9 @@
             }
             message += `\n_Aguardando Mockup digital e valores._`;
 
-            // WhatsApp API URL (Phone number 5511993200523)
             const targetPhone = "5511993200523";
             const whatsappUrl = `https://wa.me/${targetPhone}?text=${encodeURIComponent(message)}`;
 
-            // Open WhatsApp in a new tab
             window.open(whatsappUrl, '_blank');
         }
     </script>
